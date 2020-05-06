@@ -132,7 +132,10 @@ public class DoctorPayment {
 	}
 	
 	
-	public String updateDoctorPayment(String PaymentID, String Paymentcode, String DocID, String DocName, String PaymentType, String Amount, String DateOfPayed)
+	
+	
+	
+	public String updateDoctorPayment(String PaymentID,String Paymentcode, String DocID, String DocName, String PaymentType, String Amount, String DateOfPayed)
 	{
 		String output = "";
 		
@@ -156,7 +159,7 @@ public class DoctorPayment {
 			preparedStmt.setString(4, PaymentType);
 			preparedStmt.setFloat(5, Float.parseFloat(Amount));
 			preparedStmt.setString(6, DateOfPayed);
-			preparedStmt.setInt(5, Integer.parseInt(PaymentID));
+			preparedStmt.setInt(7, Integer.parseInt(PaymentID));
 			
 			// execute the statement
 			preparedStmt.execute();
@@ -167,12 +170,56 @@ public class DoctorPayment {
 		}
 		catch (Exception e)
 		{
-			output = "{\"status\":\"error\", \"data\": \"Error while updating the DoctorPayment.\"}";
+			output = "{\"status\":\"error\", \"data\": \"Error while updating the payment.\"}";
 			System.err.println(e.getMessage());
 		}
 		
 		return output;
 	}
+	
+	
+	
+//	public String updateDoctorPayment(String PaymentID, String Paymentcode, String DocID, String DocName, String PaymentType, String Amount, String DateOfPayed)
+//	{
+//		String output = "";
+//		
+//		try
+//		{
+//			Connection con = connect();
+//			
+//			if (con == null)
+//			{
+//				return "Error while connecting to the database for updating.";
+//			}
+//			
+//			// create a prepared statement
+//			String query = "UPDATE docpayment SET Paymentcode=?,DocID=?,DocName=?,PaymentType=?,Amount=?,DateOfPayed=? WHERE PaymentID=?";
+//			PreparedStatement preparedStmt = con.prepareStatement(query);
+//			
+//			// binding values
+//			preparedStmt.setString(1, Paymentcode);
+//			preparedStmt.setString(2, DocID);
+//			preparedStmt.setString(3, DocName);
+//			preparedStmt.setString(4, PaymentType);
+//			preparedStmt.setFloat(5, Float.parseFloat(Amount));
+//			preparedStmt.setString(6, DateOfPayed);
+//			preparedStmt.setInt(5, Integer.parseInt(PaymentID));
+//			
+//			// execute the statement
+//			preparedStmt.execute();
+//			con.close();
+//			
+//			String newDoctorPayment = readDoctorPayment();
+//			output = "{\"status\":\"success\", \"data\": \"" + newDoctorPayment + "\"}";
+//		}
+//		catch (Exception e)
+//		{
+//			output = "{\"status\":\"error\", \"data\": \"Error while updating the DoctorPayment.\"}";
+//			System.err.println(e.getMessage());
+//		}
+//		
+//		return output;
+//	}
 	
 	
 	

@@ -55,8 +55,11 @@ public class DoctorPaymentAPI extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 *
 	 */
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	
+protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Map paras = getParasMap(request);
 		
@@ -70,6 +73,21 @@ public class DoctorPaymentAPI extends HttpServlet {
 		
 		response.getWriter().write(output);
 	}
+	
+//	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		Map paras = getParasMap(request);
+//		
+//		String output = DoctorPaymentObj.updateDoctorPayment(paras.get("hidPaymentIDSave").toString(),
+//										   paras.get("Paymentcode").toString(),
+//										   paras.get("DocID").toString(),
+//										   paras.get("DocName").toString(),
+//										   paras.get("PaymentType").toString(),
+//										   paras.get("Amount").toString(),
+//										   paras.get("DateOfPayed").toString());
+//		
+//		response.getWriter().write(output);
+//	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
