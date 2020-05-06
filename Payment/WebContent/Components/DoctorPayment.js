@@ -173,8 +173,19 @@ function validateDoctorPaymentForm()
 	// DateOfPayed------------------------
 	if ($("#DateOfPayed").val().trim() == "")
 	{
-		return "Insert DateOfPayed.";
+		return "! please Insert the DateOfPayed in this Format 'YYYY/MM/DD'";
 	}
 	
 	return true;
 }
+
+function valdate() {
+    var regdate = /^(19[0-9][0-9]|20[0-9][0-9])\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/;
+    if (formDoctorPayment.DateOfPayed.value.match(regdate)) {
+      return true;
+    } else {
+      alert("! please Insert the DateOfPayed in this Format 'YYYY/MM/DD'");
+      formDoctorPayment.DateOfPayed.value = "";
+      formDoctorPayment.DateOfPayed.focus();
+      return false;}
+    }
